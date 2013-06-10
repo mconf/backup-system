@@ -14,6 +14,7 @@ mkdir -p $BTSYNC_CONFIG_PATH
 
 
 # download and install btsync
+echo "Installing btsync"
 mkdir -p /tmp/btsyncinstall
 cd /tmp/btsyncinstall
 # version compatible with machines on xen
@@ -25,6 +26,7 @@ tar -xf btsync.tar.gz
 sudo mv btsync $BTSYNC_BIN_PATH/btsync
 
 # prepare sync variables
+echo "Configuring btsync"
 ENCRYPTED_FOLDER_SECRET=$(btsync --generate-secret)
 ENCRYPTED_FOLDER_SECRET_RO=$(btsync --get-ro-secret $ENCRYPTED_FOLDER_SECRET)
 echo "{ 
@@ -55,17 +57,17 @@ echo "{
 mv ./sync.conf $BTSYNC_CONFIG_PATH/sync.conf
 
 # btsync deamon
+echo "Setting up btsync daemon"
 echo "
 #!/bin/sh
 btsync --config /home/$USER/.btsync/sync.conf
 " > btsync-daemon
-
-# moving daemon to your daemontools services path
 chmod +x btsync-daemon
 sudo mv ./btsync-daemon /etc/init.d/
 sudo update-rc.d btsync-daemon defaults 
 
 # start btsync service
+echo "Starting btsync service"
 service btsync-daemon
 
 echo ""
