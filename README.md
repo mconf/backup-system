@@ -9,7 +9,7 @@ The ideia is to use [btsync](http://labs.bittorrent.com/experiments/sync.html) t
 
 To install the backup tool you just have to run the fallowing command:
 
-< ./backup-system/scripts/install_backupsystem.sh >
+` ./backup-system/scripts/install_backupsystem.sh `
 
 This will install btsync and setup a default encrypted folder under the path specified by the variable BACKUP_PATH. You can change this folder by altering this variable before running the script.
 Then, the script will return a secret that you should TAKE NOTE to add to another instance of btsync that will act as a backup server.
