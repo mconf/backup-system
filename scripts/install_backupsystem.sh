@@ -42,7 +42,7 @@ echo "{
     {
       \"secret\" : \""$ENCRYPTED_FOLDER_SECRET"\",
       \"dir\" : \""$BACKUP_PATH/encrypted"\",
-      \"use_relay_server\" : true,
+      \"use_relay_server\" : false,
       \"use_tracker\" : true, 
       \"use_dht\" : false,
       \"search_lan\" : true,
