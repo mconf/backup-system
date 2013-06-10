@@ -1,14 +1,18 @@
 #!/bin/bash
 
+# User should replace this variable for the apropriate data
 BACKUP_ID="ID"
 DB_PASS="PASSWORD"
 DB_USER="USER"
 DB_NAME="TABLE"
 APP_FILES="APP_FOLDER_PATH"
+
+# default paths
 WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"
 BACKUP_FOLDER="/home/$USER/.backup/encrypted"
 SCRIPTS_PATH=$PWD
 
+#starting back up
 echo "BACKUP $BACKUP_ID"
 mkdir -p $BACKUP_FOLDER
 
