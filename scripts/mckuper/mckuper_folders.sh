@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # User should replace this variable for the apropriate data
+APP_FILES=("FOLDER_PATH_1" "FOLDER_PATH_2")
 BACKUP_ID="ID"
-DB_PASS="PASSWORD"
-DB_USER="USER"
-DB_NAME="TABLE"
-APP_FILES="APP_FOLDER_PATH"
 SECRET="YOUR_SECRET_PASSPHRASE"
 
 # default paths
@@ -21,13 +18,13 @@ mkdir -p $BACKUP_FOLDER
 mkdir -p $WORK_FOLDER
 cd $WORK_FOLDER
 
-# dump mysql
-MYSQL_DUMP_FILE="./$BACKUP_ID-`date +%F-%Hh%M`.sql"
-mysqldump -u $DB_USER --password=$DB_PASS $DB_NAME > $MYSQL_DUMP_FILE
-
 # Copying files to temp folder
-mkdir -p ./app
-cp -R $APP_FILES/* ./app
+for FOLDER in ${APP_FILES[*]}
+do
+	DEST_PATH=./folders/$FOLDER
+	mkdir -p $DEST_PATH
+	cp -R $FOLDER/* $DEST_PATH
+done
 
 # Encrypt and move to backup folder
 export ENCRYPT_SOURCE_PATH=$WORK_FOLDER
