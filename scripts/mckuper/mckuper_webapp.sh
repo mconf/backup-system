@@ -36,7 +36,7 @@ export ENCRYPT_ID=$BACKUP_ID
 $SCRIPTS_PATH/mckuper_encrypt.sh
 
 # Cleaning up tmp files
-sudo rm -r -f $WORK_FOLDER
+rm -r -f $WORK_FOLDER
 
 # Rotating
 export ROTATE_FOLDER=$BACKUP_FOLDER
