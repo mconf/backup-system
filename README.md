@@ -8,6 +8,25 @@ All scripts here are designed for Ubuntu 10.04+.
 
 ## Usage
 
+In order to deploy the backup system, you should clone this repository and make a copy of each desired backup job and replace the indicated variables. For example:
+
+` cp ./backup-system/scripts/install_backupsystem.sh ./backup-system/scripts/MY_BACKUP_JOB.sh`
+
+replacing the variables:
+
+`
+BACKUP_ID="MY_BACKUP"
+DB_PASS="MY_PASSWORD"
+DB_USER="MY_USER"
+DB_NAME="MY_TABLE"
+APP_FILES="MY_BACKEDUP_FOLDER"
+SECRET="MY_ENCRYPTION_SECRET"
+`
+
+It is important to keep every script on the same folder, as some scripts call others.
+
+### Install btsync
+
 To install the backup tool you just have to run the fallowing command:
 
 ` ./backup-system/scripts/install_backupsystem.sh `
@@ -17,6 +36,8 @@ Then, the script will return a secret that you should TAKE NOTE to add to anothe
 It is important to note that this secret is read-only to prevent improper deletion in any backup server.
 
 This script is not idempotent. 
+
+Updates can be made running the update_btsync script. 
 
 ### Schedule Backups
 
