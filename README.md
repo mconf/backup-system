@@ -10,7 +10,18 @@ All scripts here are designed for Ubuntu 10.04.
 
 Log in the server you want to backup and follow the steps below.
 
-The user should have full access to the backed-up folders and, to install btsync, you need root access.
+
+#### Create a `backups` user
+
+Create the user and add permission to run `sudo`: 
+
+```bash
+sudo useradd -d /home/backups -m backups -s /bin/bash
+sudo passwd backups # set a password!
+sudo adduser backups sudo
+``` 
+
+Logout and login again with the new user. 
 
 #### Install `btsync`
 
@@ -30,12 +41,12 @@ You can change it by altering the `BACKUP_PATH` variable before running the scri
 Then, the script will return a secret that you should **take note** to add to another instance of `btsync` that will actually backup the data.
 It is important to note that this secret is read-only to prevent improper deletion in any backup server.
 
-This script is not idempotent. It will override the previous secret and you will have to reconfigure any backup server previously configured.
+This script is not idempotent. It will override the previous secret and you will have to reconfigure any remote backup server previously configured.
 
 Updates for btsync can be made running the `update_btsync` script.
 
 
-#### Running scripts to backup the data
+#### Running scripts to backup data
 
 The scripts will create backup packages, encrypt them and copy everything to the folders shared with `btsync`.
 
