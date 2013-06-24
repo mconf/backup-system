@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # User should replace this variable for the apropriate data
+BACKUP_ID="app_name"
 APP_FILES=("FOLDER_PATH_1" "FOLDER_PATH_2")
-BACKUP_ID="ID"
-SECRET="YOUR_SECRET_PASSPHRASE"
+SECRET="MY_ENCRYPTION_SECRET"
 
 # default paths
 WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"

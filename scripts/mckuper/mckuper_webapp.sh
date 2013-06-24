@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # User should replace this variable for the apropriate data
-BACKUP_ID="ID"
-DB_PASS="PASSWORD"
-DB_USER="USER"
-DB_NAME="TABLE"
-APP_FILES="APP_FOLDER_PATH"
-SECRET="YOUR_SECRET_PASSPHRASE"
+BACKUP_ID="app_name"
+DB_PASS="password"
+DB_USER="username"
+DB_NAME="app_table"
+APP_FILES="/var/www/app"
+SECRET="MY_ENCRYPTION_SECRET"
 
 # default paths
 WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"
