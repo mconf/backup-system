@@ -11,7 +11,7 @@ SECRET="MY_ENCRYPTION_SECRET"
 # default paths
 WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"
 BACKUP_FOLDER="/home/$USER/.backup/encrypted"
-SCRIPTS_PATH=$PWD
+SCRIPTS_PATH=$(pwd)/$(dirname $0)
 
 #starting back up
 echo "BACKUP $BACKUP_ID"
@@ -34,13 +34,15 @@ export ENCRYPT_SOURCE_PATH=$WORK_FOLDER
 export ENCRYPT_DEST_PATH=$BACKUP_FOLDER
 export ENCRYPT_SECRET=$SECRET
 export ENCRYPT_ID=$BACKUP_ID
-$SCRIPTS_PATH/mckuper_encrypt.sh
-
-# Cleaning up tmp files
-sudo rm -r -f $WORK_FOLDER
+echo $SCRIPTS_PATH
+cd $SCRIPTS_PATH
+./mckuper_encrypt.sh
 
 # Rotating
 export ROTATE_FOLDER=$BACKUP_FOLDER
 export ROTATE_MAX=2
 export ROTATE_FILTER=*.tar.gz.aes
-$SCRIPTS_PATH/mckuper_rotate.sh
+./mckuper_rotate.sh
+
+# Cleaning up tmp files
+sudo rm -r -f $WORK_FOLDER
