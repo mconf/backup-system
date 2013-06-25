@@ -27,10 +27,10 @@ Logout and login again with the new user. In order to access folders with differ
 sudo visudo
 ```
 
-And then add the line (replace YOUR_BACKUP_USER for the name of the user that you previously created):
+And then add the line (replace backups for the name of the user that you previously created):
 
 ```bash
-YOUR_BACKUP_USER ALL=(ALL) NOPASSWD: ALL
+backups ALL=(ALL) NOPASSWD: ALL
 ```
 
 #### Install `btsync`
