@@ -21,7 +21,17 @@ sudo passwd backups # set a password!
 sudo adduser backups sudo
 ``` 
 
-Logout and login again with the new user. 
+Logout and login again with the new user. In order to access folders with different permissions, this user should be able to execute sudo from scripts, without password prompt. To enable this, you must edit permissions with the following command: 
+
+''bash
+sudo visudo
+'''
+
+And then add the line (replace YOUR_BACKUP_USER for the name of the user that you previously created):
+
+''bash
+YOUR_BACKUP_USER ALL=(ALL) NOPASSWD: ALL
+'''
 
 #### Install `btsync`
 
