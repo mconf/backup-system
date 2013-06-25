@@ -27,7 +27,7 @@ mysqldump -u $DB_USER --password=$DB_PASS $DB_NAME > $MYSQL_DUMP_FILE
 
 # Copying files to temp folder
 mkdir -p ./app
-cp -R $APP_FILES/* ./app
+sudo cp -R $APP_FILES/* ./app
 
 # Encrypt and move to backup folder
 export ENCRYPT_SOURCE_PATH=$WORK_FOLDER
@@ -37,7 +37,7 @@ export ENCRYPT_ID=$BACKUP_ID
 $SCRIPTS_PATH/mckuper_encrypt.sh
 
 # Cleaning up tmp files
-rm -r -f $WORK_FOLDER
+sudo rm -r -f $WORK_FOLDER
 
 # Rotating
 export ROTATE_FOLDER=$BACKUP_FOLDER

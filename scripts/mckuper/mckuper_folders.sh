@@ -23,7 +23,7 @@ for FOLDER in ${APP_FILES[*]}
 do
 	DEST_PATH=./folders/$FOLDER
 	mkdir -p $DEST_PATH
-	cp -R $FOLDER/* $DEST_PATH
+	sudo cp -R $FOLDER/* $DEST_PATH
 done
 
 # Encrypt and move to backup folder
@@ -34,7 +34,7 @@ export ENCRYPT_ID=$BACKUP_ID
 $SCRIPTS_PATH/mckuper_encrypt.sh
 
 # Cleaning up tmp files
-rm -r -f $WORK_FOLDER
+sudo rm -r -f $WORK_FOLDER
 
 # Rotating
 export ROTATE_FOLDER=$BACKUP_FOLDER
