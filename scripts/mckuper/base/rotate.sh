@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# required variables: ROTATE_FOLDER ROTATE_FILTER ROTATE_MAX
+
 BACKUP_COUNT=`ls $ROTATE_FOLDER/$ROTATE_FILTER | wc -l`
 while [ "${BACKUP_COUNT}" -gt "${ROTATE_MAX}" ]; do
   OLDEST=`ls $ROTATE_FOLDER/$ROTATE_FILTER | head -1`
