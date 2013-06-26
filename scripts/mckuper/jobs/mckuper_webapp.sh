@@ -8,10 +8,10 @@ DB_NAME="app_table"
 APP_FILES="/var/www/app"
 SECRET="MY_ENCRYPTION_SECRET"
 BASE_SCRIPTS_PATH="~/backup-system/scripts/mckuper/base"
+BACKUP_FOLDER="/home/BACKUP_USER/.backup/encrypted"
 
 # default paths
 WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"
-BACKUP_FOLDER="/home/$USER/.backup/encrypted"
 
 #starting back up
 echo "BACKUP $BACKUP_ID"
