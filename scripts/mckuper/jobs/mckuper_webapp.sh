@@ -15,10 +15,10 @@ BACKUP_FOLDER="/home/$USER/.backup/encrypted"
 
 #starting back up
 echo "BACKUP $BACKUP_ID"
-mkdir -p $BACKUP_FOLDER
+sudo mkdir -p $BACKUP_FOLDER
 
 # change to work folder
-mkdir -p $WORK_FOLDER
+sudo mkdir -p $WORK_FOLDER
 cd $WORK_FOLDER
 
 # dump mysql
