@@ -104,7 +104,7 @@ To edit the table enterof jobs: `crontab -e`
 Add, for example, the following line:
 
 ```
-30 1 * * * cd ./backup-system/scripts/mckuper/; ./mckuper_webapp_APP_NAME.sh
+30 1 * * * /bin/bash -l -c 'cd /home/backups/backup-system/scripts/mckuper/; /home/backups/backup-system/scripts/mckuper/mckuper_webapp_APP_NAME.sh'
 ```
 
 This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
