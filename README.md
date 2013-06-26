@@ -60,7 +60,7 @@ Updates for btsync can be made running the `update_btsync` script.
 
 The scripts will create backup packages, encrypt them and copy everything to the folders shared with `btsync`.
 
-The scripts currently available for use are:
+The backup jobs currently available for use are:
 
 * `mckuper_webapp.sh`: to backup a web app, including a folder and a MySQL database.
 * `mckuper_folders.sh`: to backup one or a set of folders.
@@ -75,15 +75,17 @@ chmod a+x ./backup-system/scripts/mckuper/mckuper_webapp_APP_NAME.sh
 Open it and set/replace these variables:
 
 ```bash
-BACKUP_ID="app_name"             # a name that will be used to identify the files from this backup
-DB_PASS="password"               # database password
-DB_USER="username"               # database username
-DB_NAME="app_table"              # database table name
-APP_FILES="/var/www/app"         # folder with the files that will be backed up
-SECRET="MY_ENCRYPTION_SECRET"    # a password used to encrypt the files (make it as big as possible. 20+ )
+BACKUP_ID="app_name"                                      # a name that will be used to identify the files from this backup
+DB_PASS="password"                                        # database password
+DB_USER="username"                                        # database username
+DB_NAME="app_table"                                       # database table name
+APP_FILES="/var/www/app"                                  # folder with the files that will be backed up
+SECRET="MY_ENCRYPTION_SECRET"                             # a password used to encrypt the files (make it as big as possible. 20+ )
+BASE_SCRIPTS_PATH="./backup-system/scripts/mckuper/base"  # path of the scripts used by other scripts
+BACKUP_FOLDER="/home/BACKUP_USER/.backup/encrypted"       # path that you save the data, replace for you created login or change it completely
 ```
 
-It is important to *keep the scripts on their original folders*, as some scripts call others.
+Script are folder independent, but all folder must be explicitly defined on each script.
 
 Run it once to test it:
 
@@ -104,7 +106,7 @@ To edit the table enterof jobs: `crontab -e`
 Add, for example, the following line:
 
 ```
-30 1 * * * /bin/bash -l -c 'cd /home/backups/backup-system/scripts/mckuper/; /home/backups/backup-system/scripts/mckuper/mckuper_webapp_APP_NAME.sh'
+30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/jobs/mckuper_webapp_APP_NAME.sh'
 ```
 
 This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
