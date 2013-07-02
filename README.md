@@ -21,7 +21,7 @@ sudo passwd backups # set a password!
 sudo adduser backups sudo
 ``` 
 
-Logout and login again with the new user. In order to access folders with different permissions, this user should be able to execute sudo from scripts, without password prompt. To enable this, you must edit permissions with the following command: 
+In order to access folders with different permissions, this user should be able to execute sudo from scripts, without password prompt. To enable this, you must edit permissions with the following command: 
 
 ```bash
 sudo visudo
@@ -33,17 +33,21 @@ And then add the line (replace backups for the name of the user that you previou
 backups ALL=(ALL) NOPASSWD: ALL
 ```
 
+Logout and login again with the new user.
+
 #### Install `btsync`
 
 First of all, you have to clone this repository with the following command:
 
-```
+```bash
 git clone https://github.com/mconf/backup-system.git
 ```
 
 To install the backup tool you just have to run the following command:
 
-`sudo ./backup-system/scripts/install_backupsystem.sh `
+```bash
+sudo ./backup-system/scripts/install_backupsystem.sh
+```
 
 This will install `btsync` and setup a default encrypted folder under the path specified by the variable `BACKUP_PATH`. By default this folder is `/home/<user>/.backup`.
 You can change it by altering the `BACKUP_PATH` variable before running the script, but this is not recommended.
@@ -68,8 +72,8 @@ The backup jobs currently available for use are:
 First copy the script you want to a different file to edit it and give it permissions:
 
 ```bash
-cp ./backup-system/scripts/mckuper/mckuper_webapp.sh ./backup-system/scripts/mckuper/mckuper_webapp_APP_NAME.sh
-chmod a+x ./backup-system/scripts/mckuper/mckuper_webapp_APP_NAME.sh
+cp ./backup-system/scripts/mckuper/jobs/mckuper_webapp.sh ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
+chmod a+x ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
 ```
 
 Open it and set/replace these variables:
@@ -90,8 +94,7 @@ Script are folder independent, but all folder must be explicitly defined on each
 Run it once to test it:
 
 ```bash
-cd ./backup-system/scripts/mckuper/
-./mckuper_webapp_APP_NAME.sh
+./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
 ```
 
 
@@ -106,7 +109,7 @@ To edit the table enterof jobs: `crontab -e`
 Add, for example, the following line:
 
 ```
-30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/jobs/mckuper_webapp_APP_NAME.sh'
+30 1 * * * /bin/bash -l -c '/home/backups/backup-system/backup_jobs/mckuper_webapp_APP_NAME.sh'
 ```
 
 This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
