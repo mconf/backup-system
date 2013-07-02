@@ -11,10 +11,11 @@ BASE_SCRIPTS_PATH="~/backup-system/scripts/mckuper/base"
 BACKUP_FOLDER="/home/BACKUP_USER/.backup/encrypted"
 
 # default paths
-WORK_FOLDER="/tmp/backup/`date +%F-%Hh%M`"
+WORK_FOLDER="/tmp/$BACKUP_ID/`date +%F-%Hh%M`"
 
-#starting back up
+# starting back up
 echo "BACKUP $BACKUP_ID"
+sudo rm -r $BACKUP_FOLDER
 mkdir -p $BACKUP_FOLDER
 
 # change to work folder
