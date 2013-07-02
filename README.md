@@ -6,6 +6,7 @@ The idea is to use [btsync](http://labs.bittorrent.com/experiments/sync.html) to
 
 All scripts here are designed for Ubuntu 10.04.
 
+
 ## Usage
 
 Log in the server you want to backup and follow the steps below.
@@ -97,6 +98,10 @@ Run it once to test it:
 ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
 ```
 
+#### Add it to your backup server
+
+Go to the server that will store your backups and add the new folder/secret to it.
+
 
 #### Schedule your backups
 
@@ -109,7 +114,7 @@ To edit the table enterof jobs: `crontab -e`
 Add, for example, the following line:
 
 ```
-30 1 * * * /bin/bash -l -c '/home/backups/backup-system/backup_jobs/mckuper_webapp_APP_NAME.sh'
+30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh'
 ```
 
 This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
@@ -120,3 +125,13 @@ For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-
 
 * Implement a better daemon system with start, stop and restart methods.
 * Auto add secret to a specified backup server.
+ 
+## Other
+
+If you ever need to start your btsync deamon again, use: 
+
+```bash
+sudo service btsync-daemon start
+```
+
+To stop it just kill the process.
