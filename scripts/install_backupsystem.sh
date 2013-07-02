@@ -15,6 +15,7 @@ mkdir -p $BTSYNC_CONFIG_PATH
 
 # download and install btsync
 echo "Installing btsync"
+sudo rm -r /tmp/btsyncinstall
 mkdir -p /tmp/btsyncinstall
 cd /tmp/btsyncinstall
 # version compatible with machines on xen
