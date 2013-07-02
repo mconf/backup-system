@@ -47,7 +47,7 @@ git clone https://github.com/mconf/backup-system.git
 To install the backup tool you just have to run the following command:
 
 ```bash
-sudo ./backup-system/scripts/install_backupsystem.sh
+./backup-system/scripts/install_backupsystem.sh # don't use sudo!
 ```
 
 This will install `btsync` and setup a default encrypted folder under the path specified by the variable `BACKUP_PATH`. By default this folder is `/home/<user>/.backup`.
