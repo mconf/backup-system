@@ -38,6 +38,8 @@ Logout and login again with the new user.
 
 #### Install `btsync`
 
+*Warning*: btsync requires the same version across all servers syncing the same folder. Keep that in mind.
+
 First of all, you have to clone this repository with the following command:
 
 ```bash
