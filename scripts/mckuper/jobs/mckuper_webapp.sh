@@ -4,13 +4,13 @@
 BACKUP_ID="app_name"
 DB_PASS="password"
 DB_USER="username"
-DB_NAME="app_table"
+DB_NAME="app_db"
 APP_FILES="/var/www/app"
 SECRET="MY_ENCRYPTION_SECRET"
-BASE_SCRIPTS_PATH="~/backup-system/scripts/mckuper/base"
-BACKUP_FOLDER="/home/BACKUP_USER/.backup/encrypted"
 
 # default paths
+BASE_SCRIPTS_PATH="/home/backups/backup-system/scripts/mckuper/base"
+BACKUP_FOLDER="/home/backups/.backup/encrypted"
 WORK_FOLDER="/tmp/$BACKUP_ID/`date +%F-%Hh%M`"
 
 # starting back up
