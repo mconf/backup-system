@@ -2,7 +2,7 @@
 
 # User should replace this variable for the apropriate data
 BACKUP_ID="app_name"
-FOLDER_PATHS=("FOLDER_PATH_1" "FOLDER_PATH_2")
+FOLDER_PATHS="FOLDER_PATH_1"
 SECRET="MY_ENCRYPTION_SECRET"
 
 # default paths

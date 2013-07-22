@@ -14,15 +14,15 @@ Log in the server you want to backup and follow the steps below.
 
 #### Create a `backups` user
 
-Create the user and add permission to run `sudo`: 
+Create the user and add permission to run `sudo`:
 
 ```bash
 sudo useradd -d /home/backups -m backups -s /bin/bash
 sudo passwd backups # set a password!
 sudo adduser backups sudo
-``` 
+```
 
-In order to access folders with different permissions, this user should be able to execute sudo from scripts, without password prompt. To enable this, you must edit permissions with the following command: 
+In order to access folders with different permissions, this user should be able to execute sudo from scripts, without password prompt. To enable this, you must edit permissions with the following command:
 
 ```bash
 sudo visudo
@@ -70,7 +70,7 @@ The scripts will create backup packages, encrypt them and copy everything to the
 The backup jobs currently available for use are:
 
 * `mckuper_webapp.sh`: to backup a web app, including a folder and a MySQL database.
-* `mckuper_folders.sh`: to backup one or a set of folders.
+* `mckuper_folders.sh`: to backup one folder.
 
 First copy the script you want to a different file to edit it and give it permissions:
 
@@ -133,7 +133,7 @@ sudo killall btsync
 
 Then you delete the fallowing files:
 ```
-sudo rm /etc/init.d/btsync-daemon 
+sudo rm /etc/init.d/btsync-daemon
 sudo rm /usr/local/bin/btsync
 ```
 The fallowing folders to be deleted may vary according to the user name created previously. You should replace *backups* for the name that you used. Notice that you will be deleting the backuped data and loose all configurations.
@@ -152,10 +152,10 @@ crontab -e
 
 * Implement a better daemon system with start, stop and restart methods.
 * Auto add secret to a specified backup server.
- 
+
 ## Other
 
-If you ever need to start your btsync deamon again, use: 
+If you ever need to start your btsync deamon again, use:
 
 ```bash
 sudo service btsync-daemon start
