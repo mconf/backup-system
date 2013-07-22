@@ -15,7 +15,6 @@ WORK_FOLDER="/tmp/$BACKUP_ID/`date +%F-%Hh%M`"
 
 # starting back up
 echo "BACKUP $BACKUP_ID"
-sudo rm -r $BACKUP_FOLDER
 mkdir -p $BACKUP_FOLDER
 
 # change to work folder
