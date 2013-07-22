@@ -113,13 +113,15 @@ To list cron jobs registered: `crontab -l`
 
 To edit the table enterof jobs: `crontab -e`
 
-Add, for example, the following line:
+Add, for example, one of the following commands:
 
 ```
+# every day at 1:30 AM
 30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh'
-```
 
-This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
+# every Saturday at 1:00 AM
+0 1 * * 6 /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh'
+```
 
 For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/) tutorials across the internet.
 
@@ -160,5 +162,15 @@ If you ever need to start your btsync deamon again, use:
 ```bash
 sudo service btsync-daemon start
 ```
+
+## Known issues
+
+* You have to use the same version of btsync in all servers, and the installation script will always
+install the latest version available.
+* If using two scripts to backup files in the same server, use completely different IDs. IDs such as `redmine` and `redmine-something`
+will not work as expected. The rotate script will consider that they are the same and files that shouldn't be removed
+will be removed.
+* The script `mkcuper_folders.sh` will only work with a single folder. This happens because we can't export an array
+of strings (of paths) from one bash script to another.
 
 To stop it just kill the process.
