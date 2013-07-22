@@ -33,7 +33,7 @@ $BASE_SCRIPTS_PATH/encrypt.sh
 # Rotating
 export ROTATE_FOLDER=$BACKUP_FOLDER
 export ROTATE_MAX=2
-export ROTATE_FILTER=*.tar.gz.aes
+export ROTATE_FILTER="${BACKUP_ID}-*.tar.gz.aes"
 $BASE_SCRIPTS_PATH/rotate.sh
 
 # Cleaning up tmp files
