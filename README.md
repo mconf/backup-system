@@ -123,6 +123,31 @@ This will make `mckuper_webapp_APP_NAME.sh` be called every day at 01:30.
 
 For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/) tutorials across the internet.
 
+
+#### Uninstall backup system
+
+In order to undo this installation, you must first stop btsync process with the fallowing command.
+```
+sudo killall btsync
+```
+
+Then you delete the fallowing files:
+```
+sudo rm /etc/init.d/btsync-daemon 
+sudo rm /usr/local/bin/btsync
+```
+The fallowing folders to be deleted may vary according to the user name created previously. You should replace *backups* for the name that you used. Notice that you will be deleting the backuped data and loose all configurations.
+
+```
+sudo rm -r /home/backups/.btsync
+sudo rm -r /home/backups/.backup
+```
+Lastly, you should delete all cron jobs that you eventually added. You can access these through the fallowing command:
+
+```
+crontab -e
+```
+
 ## Future works
 
 * Implement a better daemon system with start, stop and restart methods.
