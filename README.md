@@ -76,7 +76,7 @@ First copy the script you want to a different file to edit it and give it permis
 
 ```bash
 cp ./backup-system/scripts/mckuper/jobs/mckuper_webapp.sh ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
-chmod a+x ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
+chmod 770 ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
 ```
 
 Open it and set/replace these variables:
