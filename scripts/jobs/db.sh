@@ -8,7 +8,7 @@ DB_NAME="app_db"
 SECRET="MY_ENCRYPTION_SECRET"
 
 # default paths
-BASE_SCRIPTS_PATH="/home/backups/backup-system/scripts/mckuper/base"
+BASE_SCRIPTS_PATH="/home/backups/backup-system/scripts/base"
 BACKUP_FOLDER="/home/backups/.backup/encrypted"
 WORK_FOLDER="/tmp/$BACKUP_ID/`date +%F-%Hh%M`"
 

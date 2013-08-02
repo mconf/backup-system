@@ -69,14 +69,15 @@ The scripts will create backup packages, encrypt them and copy everything to the
 
 The backup jobs currently available for use are:
 
-* `mckuper_webapp.sh`: to backup a web app, including a folder and a MySQL database.
-* `mckuper_folders.sh`: to backup one folder.
+* `webapp.sh`: to backup a web app, including a folder and a MySQL database.
+* `db.sh`: to backup a database only, dumping it to an SQL file.
+* `folders.sh`: to backup one folder.
 
 First copy the script you want to a different file to edit it and give it permissions:
 
 ```bash
-cp ./backup-system/scripts/mckuper/jobs/mckuper_webapp.sh ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
-chmod 770 ./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
+cp ./backup-system/scripts/jobs/webapp.sh ./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
+chmod 770 ./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
 ```
 
 Open it and set/replace these variables:
@@ -88,7 +89,7 @@ DB_USER="username"                                        # database username
 DB_NAME="app_table"                                       # database table name
 APP_FILES="/var/www/app"                                  # folder with the files that will be backed up
 SECRET="MY_ENCRYPTION_SECRET"                             # a password used to encrypt the files (make it as big as possible. 20+ )
-BASE_SCRIPTS_PATH="./backup-system/scripts/mckuper/base"  # path of the scripts used by other scripts
+BASE_SCRIPTS_PATH="./backup-system/scripts/base"          # path of the scripts used by other scripts
 BACKUP_FOLDER="/home/BACKUP_USER/.backup/encrypted"       # path that you save the data, replace for you created login or change it completely
 ```
 
@@ -97,7 +98,7 @@ Script are folder independent, but all folder must be explicitly defined on each
 Run it once to test it:
 
 ```bash
-./backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh
+./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
 ```
 
 #### Add it to your backup server
@@ -117,10 +118,10 @@ Add, for example, one of the following commands:
 
 ```
 # every day at 1:30 AM
-30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh'
+30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/webapp_APP_NAME.sh'
 
 # every Saturday at 1:00 AM
-0 1 * * 6 /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/mckuper_webapp_APP_NAME.sh'
+0 1 * * 6 /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/webapp_APP_NAME.sh'
 ```
 
 For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/) tutorials across the internet.
