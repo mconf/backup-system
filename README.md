@@ -76,8 +76,8 @@ The backup jobs currently available for use are:
 First copy the script you want to a different file to edit it and give it permissions:
 
 ```bash
-cp ./backup-system/scripts/jobs/webapp.sh ./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
-chmod 770 ./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
+cp ./backup-system/scripts/jobs/webapp.sh ./backup-system/my_jobs/webapp_APP_NAME.sh
+chmod 770 ./backup-system/my_jobs/webapp_APP_NAME.sh
 ```
 
 Open it and set/replace these variables:
@@ -98,7 +98,7 @@ Script are folder independent, but all folder must be explicitly defined on each
 Run it once to test it:
 
 ```bash
-./backup-system/scripts/backup_jobs/webapp_APP_NAME.sh
+./backup-system/my_jobs/webapp_APP_NAME.sh
 ```
 
 #### Add it to your backup server
@@ -118,10 +118,10 @@ Add, for example, one of the following commands:
 
 ```
 # every day at 1:30 AM
-30 1 * * * /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/webapp_APP_NAME.sh'
+30 1 * * * /bin/bash -l -c '/home/backups/backup-system/my_jobs/webapp_APP_NAME.sh'
 
 # every Saturday at 1:00 AM
-0 1 * * 6 /bin/bash -l -c '/home/backups/backup-system/scripts/backup_jobs/webapp_APP_NAME.sh'
+0 1 * * 6 /bin/bash -l -c '/home/backups/backup-system/my_jobs/webapp_APP_NAME.sh'
 ```
 
 For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/) tutorials across the internet.
