@@ -129,23 +129,32 @@ For further information, there are [many](http://www.cyberciti.biz/faq/how-do-i-
 
 #### Uninstall backup system
 
-In order to undo this installation, you must first stop btsync process with the fallowing command.
-```
+In order to undo this installation, you must first stop btsync process with the following command:
+
+```bash
 sudo killall btsync
 ```
 
-Then you delete the fallowing files:
+Remove from the system initialization:
+
+```bash
+sudo update-rc.d -f btsync-daemon remove
 ```
+
+Then you delete the following files:
+
+```bash
 sudo rm /etc/init.d/btsync-daemon
 sudo rm /usr/local/bin/btsync
 ```
-The fallowing folders to be deleted may vary according to the user name created previously. You should replace *backups* for the name that you used. Notice that you will be deleting the backuped data and loose all configurations.
 
-```
+The following folders to be deleted may vary according to the user name created previously. You should replace *backups* for the name that you used. Notice that you will be deleting the backuped data and loose all configurations.
+
+```bash
 sudo rm -r /home/backups/.btsync
 sudo rm -r /home/backups/.backup
 ```
-Lastly, you should delete all cron jobs that you eventually added. You can access these through the fallowing command:
+Lastly, you should delete all cron jobs that you eventually added. You can access these through the following command:
 
 ```
 crontab -e
